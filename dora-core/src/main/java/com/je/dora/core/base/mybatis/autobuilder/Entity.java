@@ -11,13 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
-import java.util.Properties;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 /**
  * 根据数据库表字段自动生成 实体+ibatis xml xwl
@@ -61,21 +58,18 @@ public class Entity {
 	}
 
 	// 读取数据库配置文件 & 加载数据库连接
-	private void connectDB(String db_properties) throws IOException, ClassNotFoundException, SQLException {
-		DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
-		Resource resource = resourceLoader.getResource(getClass().getResource("/conf/").toString() + db_properties);
-		Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+	private void connectDB(Map<String, String> db_properties) throws IOException, ClassNotFoundException, SQLException {
 
-		String jdbcDriver = properties.getProperty("jdbc_driverClassName");
-		String jdbcUrl = properties.getProperty("jdbc_url");
-		String userName = properties.getProperty("jdbc_username");
-		String password = properties.getProperty("jdbc_password");
+		String jdbcDriver = db_properties.get("jdbc_driverClassName");
+		String jdbcUrl = db_properties.get("jdbc_url");
+		String userName = db_properties.get("jdbc_username");
+		String password = db_properties.get("jdbc_password");
 
 		Class.forName(jdbcDriver);
 		conn = DriverManager.getConnection(jdbcUrl, userName, password);
 	}
 
-	void builderEntity(String db_properties, String tableName) throws Exception {
+	void builderEntity(Map<String, String> db_properties, String tableName) throws Exception {
 		this.tableName = tableName;
 		// 开始生成
 		connectDB(db_properties);
