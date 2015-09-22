@@ -1,4 +1,4 @@
-package com.je.dora.module.party.controller;
+package com.je.dora.manage.web.party;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +9,7 @@ import com.je.dora.core.base.controller.BaseController;
 @Controller
 @RequestMapping("party")
 public class PartyController extends BaseController {
-
+	
 	@RequestMapping("index")
 	public ModelAndView index() {
 		return render("party/index");

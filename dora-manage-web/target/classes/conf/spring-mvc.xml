@@ -14,14 +14,15 @@
     
     <mvc:default-servlet-handler />
     
-    <!-- 扫描controller（controller层注入） -->
-   	<context:component-scan base-package="com.je.dora.module.*.controller"/>
-   	
+    <context:component-scan base-package="com.je.dora.manage.web"/>
+    
    	<mvc:annotation-driven >
 	    <mvc:message-converters register-defaults="true">
+	      <!-- 
 	      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 	        <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
 	      </bean>
+	       -->
 	      <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter" />
 	    </mvc:message-converters>
     </mvc:annotation-driven>
@@ -53,4 +54,12 @@
 		<property name="exposeRequestAttributes" value="true" />
 		<property name="exposeSessionAttributes" value="true" />
 	</bean>
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.je.dora.manage.base.intercepter.AuthorizeInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

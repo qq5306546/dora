@@ -21,8 +21,16 @@
     <script src="static/js/jquery/jquery-1.11.3.min.js"></script>
     <script src="static/js/angular/angular.min.js"></script>
     <script src="static/js/angular/angular-route.min.js"></script>
+    <script src="static/js/angular/angular-resource.js"></script>
     
     <!-- app -->
     <script src="static/js/app/app.js"></script>
+    <script type="text/javascript">
+    app.controller('HomeController', ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
+    	$scope.doTest = function(){
+    		$location.path('/test');
+    	}
+    }]);
+    </script>
   </body>
 </html>
