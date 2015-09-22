@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" ng-app="app">
+<html lang="zh-CN" data-ng-app="app">
   <head>
 	<base href="/">
     <meta charset="utf-8">
@@ -17,20 +17,12 @@
   </head>
   <body>
   	<h1>AngularJS Home Page</h1>
-    <div ng-view></div>
+    <div data-ui-view=""></div>
     <script src="static/js/jquery/jquery-1.11.3.min.js"></script>
     <script src="static/js/angular/angular.min.js"></script>
-    <script src="static/js/angular/angular-route.min.js"></script>
-    <script src="static/js/angular/angular-resource.js"></script>
+    <script src="static/js/angular/angular-ui-router.min.js"></script>
     
     <!-- app -->
     <script src="static/js/app/app.js"></script>
-    <script type="text/javascript">
-    app.controller('HomeController', ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
-    	$scope.doTest = function(){
-    		$location.path('/test');
-    	}
-    }]);
-    </script>
   </body>
 </html>
