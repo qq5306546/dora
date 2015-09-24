@@ -96,16 +96,6 @@ public interface BaseDAO<T extends BaseModel, ID> {
 	
 	/**
 	 * 新增一条数据库记录
-	 * 实体字段为空时，则不修改为空字段
-	 * @param 
-	 * 		model 新增的对象
-	 * @return
-	 * 		int 新增成功数量
-	 */
-	public int insertSelective(T model);
-    
-	/**
-	 * 新增一条数据库记录
 	 * 必须设置实体内所有字段
 	 * @param 
 	 * 		model 新增的数据实体
@@ -116,21 +106,11 @@ public interface BaseDAO<T extends BaseModel, ID> {
 	
 	/**
 	 * 修改一条数据库记录
-	 * 实体字段为空时，则不修改为空字段
-	 * @param 
-	 * 		model 修改的数据实体
-	 * @return
-	 * 		int 大于1修改成功
-	 */
-	public int updateByIdSelective(T model);
-    
-	/**
-	 * 修改一条数据库记录
 	 * 必须传递实体对应所有字段
 	 * @param 
 	 * 		model 修改的数据实体
 	 * @return
 	 * 		int 大于1修改成功
 	 */
-	public int updateById(T model);
+	public int update(T model);
 }

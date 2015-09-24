@@ -19,14 +19,14 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
  * 		<ID> 对象的唯一标识
  */
 @SuppressWarnings("rawtypes")
-public abstract interface BaseService<T, ID> {
+public interface BaseService<T, ID> {
 	
 	/**
 	 * 查询数据库表中的总行数
 	 * @return
 	 * 		long 型的数据行数
 	 */
-	public abstract long selectCount();
+	public long selectCount();
 
 	/**
 	 * 条件查询数据表中的总行数
@@ -35,7 +35,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		long 型的数据行数
 	 */
-	public abstract long selectCount(Map params);
+	public long selectCount(Map params);
 	
 	/**
 	 * 条件查询数据表中的总行数
@@ -46,14 +46,14 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		long 型的数据行数
 	 */
-	public abstract long selectCount(T model);
+	public long selectCount(T model);
     
 	/**
 	 * 查询数据库表中的所有行
 	 * @return
 	 * 		List<T> 泛型的集合对象
 	 */
-	public abstract List<T> select();
+	public List<T> select();
 	
 	/**
 	 * 条件查询数据表中的所有行
@@ -62,7 +62,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		List<T> 泛型的集合对象
 	 */
-	public abstract List<T> select(Map params);
+	public List<T> select(Map params);
 	
 	/**
 	 * 条件查询数据表中的所有行
@@ -73,7 +73,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		List<T> 泛型的集合对象
 	 */
-	public abstract List<T> select(T model);
+	public List<T> select(T model);
 	
 	/**
 	 * 查询数据表中的分页后行数量
@@ -84,7 +84,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		PageList<T> 分页后的实体
 	 */
-	public abstract PageList<T> selectPage(PageBounds pageBounds);
+	public PageList<T> selectPage(PageBounds pageBounds);
 	
 	/**
 	 * 条件查询数据表中的分页后行数量
@@ -94,7 +94,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		PageList<T> 分页后的实体
 	 */
-	public abstract PageList<T> selectPage(Map params, PageBounds pageBounds);
+	public PageList<T> selectPage(Map params, PageBounds pageBounds);
 	
 	/**
 	 * 条件查询数据表中的分页后行数量
@@ -105,7 +105,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		PageList<T> 分页后的实体
 	 */
-	public abstract PageList<T> selectPage(T model, PageBounds pageBounds);
+	public PageList<T> selectPage(T model, PageBounds pageBounds);
 	
 	/**
 	 * 唯一标识查询数据表中的行
@@ -114,14 +114,14 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		<T> 泛型的对象
 	 */
-	public abstract T selectById(ID id);
+	public T selectById(ID id);
     
 	/**
 	 * 删除数据表中所有行
 	 * @return
 	 * 		int 删除行总数
 	 */
-	public abstract int delete();
+	public int delete();
      
 	/**
 	 * 条件删除数据表中所有行
@@ -130,7 +130,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		int 删除行总数
 	 */
-	public abstract int delete(Map params);
+	public int delete(Map params);
 	
 	/**
 	 * 条件删除数据表中所有行
@@ -141,7 +141,7 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		int 删除行总数
 	 */
-	public abstract int delete(T model);
+	public int delete(T model);
      
 	/**
 	 * 唯一标识删除数据表中所有行
@@ -150,18 +150,8 @@ public abstract interface BaseService<T, ID> {
 	 * @return 
 	 * 		int 删除行总数
 	 */
-	public abstract int deleteById(ID id);
+	public int deleteById(ID id);
 	
-	/**
-	 * 新增一条数据库记录
-	 * 实体字段为空时，则不修改为空字段
-	 * @param 
-	 * 		model 新增的对象
-	 * @return
-	 * 		int 新增成功数量
-	 */
-	public abstract int insertSelective(T model);
-     
 	/**
 	 * 新增一条数据库记录
 	 * 必须设置实体内所有字段
@@ -170,18 +160,8 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		int 大于0保存成功
 	 */
-	public abstract int insert(T model);
+	public int insert(T model);
 	
-	/**
-	 * 修改一条数据库记录
-	 * 实体字段为空时，则不修改为空字段
-	 * @param 
-	 * 		model 修改的数据实体
-	 * @return
-	 * 		int 大于1修改成功
-	 */
-	public abstract int updateByIdSelective(T model);
-     
 	/**
 	 * 修改一条数据库记录
 	 * 必须传递实体对应所有字段
@@ -190,5 +170,5 @@ public abstract interface BaseService<T, ID> {
 	 * @return
 	 * 		int 大于1修改成功
 	 */
-	public abstract int updateById(T model);
+	public int update(T model);
 }

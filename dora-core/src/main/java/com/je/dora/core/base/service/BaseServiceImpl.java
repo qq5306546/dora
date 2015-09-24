@@ -11,7 +11,6 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.je.dora.core.base.mybatis.dao.BaseDAO;
 import com.je.dora.core.base.mybatis.model.BaseModel;
-import com.je.dora.core.exception.BaseException;
 import com.je.dora.core.utils.BeanUtil;
 
 @SuppressWarnings("rawtypes")
@@ -23,148 +22,67 @@ public abstract class BaseServiceImpl<T extends BaseModel, ID extends Serializab
 	private BaseDAO<T, ID> baseDAO;
 
 	public long selectCount() {
-		try {
-			return baseDAO.selectCount();
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectCount]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.selectCount();
 	}
 
 	public long selectCount(Map params) {
-		try {
-			return baseDAO.selectCount(params);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectCount]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.selectCount(params);
 	}
 
 	public long selectCount(T model) {
-		try {
-			return baseDAO.selectCount(BeanUtil.beanToMap(model));
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectCount]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.selectCount(BeanUtil.beanToMap(model));
 	}
 
 	public List<T> select() {
-		try {
-			return baseDAO.select();
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.select]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select();
 	}
 
 	public List<T> select(Map params) {
-		try {
-			return baseDAO.select(params);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.select]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select(params);
 	}
 
 	public List<T> select(T model) {
-		try {
-			return baseDAO.select(BeanUtil.beanToMap(model));
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.select]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select(BeanUtil.beanToMap(model));
 	}
 	
 	public PageList<T> selectPage(PageBounds pageBounds) {
-		try {
-			return baseDAO.select(null, pageBounds);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectPage]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select(null, pageBounds);
 	}
 	
 	public PageList<T> selectPage(Map params, PageBounds pageBounds) {
-		try {
-			return baseDAO.select(params, pageBounds);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectPage]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select(params, pageBounds);
 	}
 	
 	public PageList<T> selectPage(T model, PageBounds pageBounds) {
-		try {
-			return baseDAO.select(BeanUtil.beanToMap(model), pageBounds);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectPage]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.select(BeanUtil.beanToMap(model), pageBounds);
 	}
 
 	public T selectById(ID id) {
-		try {
-			return baseDAO.selectById(id);
-		} catch (Exception e) {
-			throw new BaseException(String.format("查询[BaseService.selectById]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.selectById(id);
 	}
 
 	public int delete() {
-		try {
-			return baseDAO.delete();
-		} catch (Exception e) {
-			throw new BaseException(String.format("删除[BaseService.delete]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.delete();
 	}
 
 	public int delete(Map params) {
-		try {
-			return baseDAO.delete(params);
-		} catch (Exception e) {
-			throw new BaseException(String.format("删除[BaseService.delete]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.delete(params);
 	}
 
 	public int delete(T model) {
-		try {
-			return baseDAO.delete(BeanUtil.beanToMap(model));
-		} catch (Exception e) {
-			throw new BaseException(String.format("删除[BaseService.delete]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.delete(BeanUtil.beanToMap(model));
 	}
 
 	public int deleteById(ID id) {
-		try {
-			return baseDAO.deleteById(id);
-		} catch (Exception e) {
-			throw new BaseException(String.format("删除[BaseService.deleteById]错误：%s", e.getMessage()), e);
-		}
-	}
-	
-	public int insertSelective(T model) {
-		try {
-			return baseDAO.insertSelective(model);
-		} catch (Exception e) {
-			throw new BaseException(String.format("新增[BaseService.insertSelective]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.deleteById(id);
 	}
 
 	public int insert(T model) {
-		try {
-			return baseDAO.insert(model);
-		} catch (Exception e) {
-			throw new BaseException(String.format("新增[BaseService.insert]错误：%s", e.getMessage()), e);
-		}
+		return baseDAO.insert(model);
 	}
 
-	public int updateByIdSelective(T model) {
-		try {
-			return baseDAO.updateByIdSelective(model);
-		} catch (Exception e) {
-			throw new BaseException(String.format("修改[BaseService.updateByIdSelective]错误：%s", e.getMessage()), e);
-		}
+	public int update(T model) {
+		return baseDAO.update(model);
 	}
-    
-	public int updateById(T model) {
-		try {
-			return baseDAO.updateById(model);
-		} catch (Exception e) {
-			throw new BaseException(String.format("修改[BaseService.updateById]错误：%s", e.getMessage()), e);
-		}
-	}
-	
 	
 }
