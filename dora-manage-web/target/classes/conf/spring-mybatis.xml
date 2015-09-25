@@ -35,7 +35,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:conf/mybatis-config.xml" /> 
-        <property name="mapperLocations" value="classpath*:mapper/*.xml" /> 
+        <property name="mapperLocations" value="classpath*:com/je/dora/module/**/dao/*.xml" /> 
         <property name="plugins">
             <list>
                 <bean class="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">

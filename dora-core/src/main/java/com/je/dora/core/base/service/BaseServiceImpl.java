@@ -18,9 +18,13 @@ public abstract class BaseServiceImpl<T extends BaseModel, ID extends Serializab
 	
 	protected final Logger logger = Logger.getLogger(getClass());
 	
-	@Autowired(required=true)
-	private BaseDAO<T, ID> baseDAO;
-
+	@Autowired
+	protected BaseDAO<T, ID> baseDAO;
+	
+	public void setDao(BaseDAO<T, ID> baseDAO) {  
+        this.baseDAO = baseDAO;  
+    }
+	
 	public long selectCount() {
 		return baseDAO.selectCount();
 	}
