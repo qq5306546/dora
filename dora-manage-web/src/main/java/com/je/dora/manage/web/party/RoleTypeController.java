@@ -19,7 +19,6 @@ public class RoleTypeController extends BaseController {
 	@RequestMapping("index")
 	@ResponseBody
 	public Object index() {
-		logger.debug(roleTypeService + "-------------------------------\n");
-		return roleTypeService.selectPage(new PageBounds(1, 10));
+		return roleTypeService.selectPage(null, new PageBounds(1, 10));
 	}
 }

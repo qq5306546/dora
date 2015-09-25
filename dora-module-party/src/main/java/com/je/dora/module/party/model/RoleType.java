@@ -10,7 +10,6 @@ public class RoleType extends BaseModel {
 
     private String roleTypeId;		//角色类型唯一标识
     private String parentTypeId;		//上级类型标识
-    private String parentTypeName;		//上级类型名称
     private String hasTable;		//有库表
     private String description;		//描述
     private Date createStamp;		//创建时间
@@ -39,16 +38,6 @@ public class RoleType extends BaseModel {
     public String getParentTypeId() {
         return this.parentTypeId;
     }
-
-    public String getParentTypeName() {
-		return parentTypeName;
-	}
-
-	public void setParentTypeName(String parentTypeName) {
-		this.parentTypeName = parentTypeName;
-	}
-
-
 
 	public void setHasTable(String hasTable) {
         this.hasTable = hasTable;

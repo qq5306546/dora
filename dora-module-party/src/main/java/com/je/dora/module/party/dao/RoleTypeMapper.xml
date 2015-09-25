@@ -78,4 +78,13 @@
 		where role_type_id = #{roleTypeId} 
 	</delete> 
 
+	<select id="selectPage" parameterType="java.lang.String" resultType="com.je.dora.module.party.model.RoleTypeParent">
+		select 
+			t1.role_type_id,t1.parent_type_id,t1.has_table,t1.description,t1.create_stamp,t1.last_update_stamp,t2.description as parentDescription
+		from 
+			role_type t1 left join role_type t2 on t1.parent_type_id=t2.role_type_id
+		<trim prefix="where" prefixOverrides="and | or"> 
+			<if test="keyword != null and keyword != ''">t1.description like concat('%',#{keyword},'%')  or t2.description like CONCAT('%',#{keyword},'%')</if>
+		</trim>
+	</select>
 </mapper> 
